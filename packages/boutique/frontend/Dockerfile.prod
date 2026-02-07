@@ -41,7 +41,7 @@ ENV VITE_THEME=$VITE_THEME
 
 RUN pnpm boutique:frontend build
 
-FROM nginx:stable-alpine AS runner
+FROM nginx:1.29.5-alpine3.23 AS runner
 
 COPY --from=builder /testnet/packages/boutique/frontend/dist /usr/share/nginx/html
 COPY --from=builder /testnet/packages/boutique/shared/package.json ./packages/boutique/shared/package.json
